@@ -49,7 +49,7 @@
 1. **Clone the Repository:**
 
  
-   git clone https://github.com/yourusername/spectrum-analyzer-dump1090.git
+   git clone https://github.com/jaw1999/spectrum-analyzer-dump1090.git
    cd spectrum-analyzer-dump1090
 
 2. Set Up a Virtual Environment (Optional but Recommended):

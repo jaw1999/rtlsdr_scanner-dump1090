@@ -1,4 +1,4 @@
-# Spectrum Analyzer with Dump1090, Frequency Scanner, and LoRa Detection Integration
+# Spectrum Analyzer with Dump1090, Frequency Scanner, LoRa Detection, and Signal Classification Integration
 
 ![Project Logo](icons/plane.png)
 
@@ -10,23 +10,24 @@
    - [Dump1090 Tab](#dump1090-tab)
    - [Signal Analysis Tab](#signal-analysis-tab)
    - [LoRa Detection Tab](#lora-detection-tab)
+   - [Signal Classification Tab](#signal-classification-tab)
 3. [Demo](#demo)
 4. [Requirements](#requirements)
 5. [Installation](#installation)
 6. [Usage](#usage)
 
-
 ## Overview
 
-**Spectrum Analyzer** is a sophisticated desktop application built with PyQt5 that seamlessly integrates with [Dump1090](https://github.com/antirez/dump1090) and includes a powerful Frequency Scanner and LoRa Detection capabilities. The application features a user-friendly interface with multiple tabs, each offering unique functionality:
+**Spectrum Analyzer** is a sophisticated desktop application built with PyQt5 that seamlessly integrates with [Dump1090](https://github.com/antirez/dump1090) and includes powerful Frequency Scanner, LoRa Detection, and Signal Classification capabilities. The application features a user-friendly interface with multiple tabs, each offering unique functionality:
 
 1. A **Home Tab** with advanced SDR (Software Defined Radio) controls, spectrum analysis, and waterfall visualization.
 2. A **Frequency Scanner Tab** that automatically scans a range of frequencies to detect active signals and logs them.
 3. A **Dump1090 Tab** displaying detailed aircraft information in a table format and an interactive map showing the positions and movements of multiple aircraft.
 4. A **Signal Analysis Tab** providing comprehensive signal processing capabilities, including IQ plots, spectrograms, and demodulation options.
 5. A **LoRa Detection Tab** for detecting and analyzing LoRa signals across multiple frequency bands with detailed signal information.
+6. A **Signal Classification Tab** enabling users to collect labeled signal samples, train machine learning models, and perform real-time signal classification.
 
-This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and anyone interested in real-time signal analysis, aircraft tracking, and LoRa signal detection.
+This tool is designed for radio enthusiasts, IoT developers, aviation buffs, data scientists, and anyone interested in real-time signal analysis, aircraft tracking, LoRa signal detection, and machine learning-based signal classification.
 
 ## Features
 
@@ -37,7 +38,7 @@ This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and
 - **SDR Controls:**
   - **Center Frequency (MHz):** Set the central frequency for monitoring.
   - **Sample Rate (MHz):** Adjust the sample rate to balance between frequency resolution and bandwidth.
-  - **Gain:** Select from available gain settings to optimize signal reception, including an auto gain option.
+  - **Gain:** Select from available gain settings to optimize signal reception.
   - **FFT Size:** Choose the FFT size for spectrum analysis (512, 1024, 2048, 4096).
   - **Averaging:** Configure the number of averages to smooth out the spectrum display.
   - **Color Scheme:** Select from various color schemes (Viridis, Plasma, Inferno, Magma, Cividis) for both spectrum and waterfall plots.
@@ -87,29 +88,54 @@ This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and
 ### LoRa Detection Tab
 
 - **Real-Time LoRa Signal Detection:**
-  - **Automatic Signal Detection:** Detect LoRa signals using correlation with reference chirp signals
-  - **Multi-band Support:** Monitor common LoRa frequency bands (433 MHz, 868 MHz, 915 MHz)
-  - **Configurable Parameters:** Adjust spreading factor, bandwidth, and detection threshold
-  - **Signal Quality Metrics:** Monitor SNR, signal strength, and detection confidence
+  - **Automatic Signal Detection:** Detect LoRa signals using correlation with reference chirp signals.
+  - **Multi-band Support:** Monitor common LoRa frequency bands (433 MHz, 868 MHz, 915 MHz).
+  - **Configurable Parameters:** Adjust spreading factor, bandwidth, and detection threshold.
+  - **Signal Quality Metrics:** Monitor SNR, signal strength, and detection confidence.
   
 - **Visualization:**
-  - **Spectrum Display:** Real-time spectrum visualization with peak hold capability
-  - **Waterfall Display:** Time-frequency visualization of LoRa signals
-  - **Color Scheme Selection:** Multiple color schemes for optimal visualization
+  - **Spectrum Display:** Real-time spectrum visualization with peak hold capability.
+  - **Waterfall Display:** Time-frequency visualization of LoRa signals.
+  - **Color Scheme Selection:** Multiple color schemes for optimal visualization.
   
 - **Detection Information:**
-  - **Frequency Display:** Show exact frequency of detected signals
-  - **Signal Strength:** Display power levels in dBm
-  - **Bandwidth:** Show configured bandwidth
-  - **Spreading Factor:** Display current spreading factor
-  - **SNR:** Show signal-to-noise ratio
-  - **Detection History:** Track detection count and timing
+  - **Frequency Display:** Show exact frequency of detected signals.
+  - **Signal Strength:** Display power levels in dBm.
+  - **Bandwidth:** Show configured bandwidth.
+  - **Spreading Factor:** Display current spreading factor.
+  - **SNR:** Show signal-to-noise ratio.
+  - **Detection History:** Track detection count and timing.
   
 - **Controls:**
-  - **Preset Frequencies:** Quick selection of common LoRa frequencies
-  - **Gain Control:** Adjustable gain settings including auto gain
-  - **Peak Hold:** Enable/disable peak hold for spectrum display
-  - **Detection Parameters:** Configurable detection threshold and signal parameters
+  - **Preset Frequencies:** Quick selection of common LoRa frequencies.
+  - **Gain Control:** Adjustable gain settings including auto gain.
+  - **Peak Hold:** Enable/disable peak hold for spectrum display.
+  - **Detection Parameters:** Configurable detection threshold and signal parameters.
+
+### Signal Classification Tab
+
+- **Data Collection:**
+  - **Collect Samples:** Gather labeled signal and noise samples directly from the SDR.
+  - **Region Selection:** Select specific frequency regions in the spectrum plot for labeling.
+  - **Labeling Tools:** Label selected regions as "Signal" or "Noise" to build a labeled dataset.
+  
+- **Machine Learning Integration:**
+  - **Feature Extraction:** Automatically extract relevant features from collected samples for model training.
+  - **Model Training:** Train customizable machine learning models (e.g., neural networks) using the labeled dataset.
+  - **Real-Time Classification:** Perform real-time classification of incoming signals based on the trained model.
+  - **Model Management:** Save, load, and manage trained models for future use.
+  
+- **Visualization:**
+  - **Training Metrics Plot:** Monitor training progress with real-time loss and accuracy graphs.
+  - **Prediction Results:** Display classification results directly on the spectrum and waterfall plots.
+  
+- **Controls:**
+  - **Start/Stop Streaming:** Control the data streaming process for classification.
+  - **Start/Stop Training:** Initiate or halt the training process.
+  - **Save/Load Model:** Save trained models to disk or load existing models for classification.
+  - **Adjust Training Parameters:** Configure epochs, batch size, and other training settings.
+  
+- **Status Indicators:** Provide real-time feedback on training progress, classification status, and any operational messages.
 
 ## Demo
 
@@ -131,6 +157,10 @@ This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and
 - matplotlib
 - pandas
 - requests
+- tensorflow
+- scikit-learn
+- json
+- folium
 
 ## Installation
 
@@ -156,7 +186,7 @@ This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and
 
 4. **Ensure Dump1090 is Installed:**
 
-    Follow the [Dump1090 installation guide](https://github.com/antirez/dump1090)
+    Follow the [Dump1090 installation guide](https://github.com/antirez/dump1090).
 
 5. **Configure Dump1090 JSON Output:**
 
@@ -176,44 +206,67 @@ This tool is designed for radio enthusiasts, IoT developers, aviation buffs, and
 
 2. **Navigate Through Tabs:**
 
-    - **Home Tab:**
-      - **Configure SDR Settings:** Adjust frequency, sample rate, gain (including auto gain), FFT size, averaging, color scheme, and waterfall speed.
-      - **Start Scanning:** Click the "Start" button to begin SDR scanning. The spectrum and waterfall plots will update in real-time.
-      - **Stop Scanning:** Click the "Stop" button to halt scanning.
-      - **Reset SDR:** Click the "Reset SDR" button to reset SDR settings to default.
+   - **Home Tab:**
+     - **Configure SDR Settings:** Adjust frequency, sample rate, gain, FFT size, averaging, color scheme, and waterfall speed.
+     - **Start Scanning:** Click the "Start" button to begin SDR scanning. The spectrum and waterfall plots will update in real-time.
+     - **Stop Scanning:** Click the "Stop" button to halt scanning.
+     - **Reset SDR:** Click the "Reset SDR" button to reset SDR settings to default.
 
-    - **Frequency Scanner Tab:**
-      - **Set Scanning Parameters:** Define the start and end frequencies, scan step size, threshold, and calibration offset.
-      - **Start Scanning:** Click the "Start Scan" button to begin scanning the frequency range.
-      - **View Detected Signals:** Monitor the list of detected frequencies and their power levels.
-      - **Stop Scanning:** Click the "Stop Scan" button to halt the scanning process.
+   - **Frequency Scanner Tab:**
+     - **Set Scanning Parameters:** Define the start and end frequencies, scan step size, threshold, and calibration offset.
+     - **Start Scanning:** Click the "Start Scan" button to begin scanning the frequency range.
+     - **View Detected Signals:** Monitor the list of detected frequencies and their power levels.
+     - **Stop Scanning:** Click the "Stop Scan" button to halt the scanning process.
 
-    - **Dump1090 Tab:**
-      - **Start Dump1090:** Click the "Start Dump1090" button to launch Dump1090.
-      - **Stop Dump1090:** Click the "Stop Dump1090" button to terminate the Dump1090 process.
-      - **View Aircraft Data:** Monitor the aircraft table and interactive map for real-time ADS-B data.
+   - **Dump1090 Tab:**
+     - **Start Dump1090:** Click the "Start Dump1090" button to launch Dump1090.
+     - **Stop Dump1090:** Click the "Stop Dump1090" button to terminate the Dump1090 process.
+     - **View Aircraft Data:** Monitor the aircraft table and interactive map for real-time ADS-B data.
 
-    - **Signal Analysis Tab:**
-      - **Select Demodulation Type:** Choose from AM, FM, USB, LSB, or CW.
-      - **Adjust FFT Size:** Select the desired FFT size for analysis.
-      - **Adjust Calibration Offset:** Fine-tune the calibration offset for accurate power measurements.
-      - **Monitor Plots:** Observe the IQ Plot, Spectrum, Waterfall, Spectrogram, and Constellation Diagram.
-      - **View Signal Statistics:** Check real-time signal parameters and statistics.
+   - **Signal Analysis Tab:**
+     - **Select Demodulation Type:** Choose from AM, FM, USB, LSB, or CW.
+     - **Adjust FFT Size:** Select the desired FFT size for analysis.
+     - **Adjust Calibration Offset:** Fine-tune the calibration offset for accurate power measurements.
+     - **Monitor Plots:** Observe the IQ Plot, Spectrum, Waterfall, Spectrogram, and Constellation Diagram.
+     - **View Signal Statistics:** Check real-time signal parameters and statistics.
 
-    - **LoRa Detection Tab:**
-      - **Select Frequency Band:** Choose from preset LoRa frequencies or enter a custom frequency.
-      - **Configure LoRa Parameters:** Set spreading factor (7-12), bandwidth (7.8-500 kHz), and detection threshold.
-      - **Start Detection:** Click "Start Detection" to begin monitoring for LoRa signals.
-      - **Monitor Signals:** Watch the spectrum and waterfall displays for LoRa activity.
-      - **View Detection Info:** Check the detection panel for detailed signal information.
-      - **Enable Peak Hold:** Toggle peak hold to track maximum signal levels.
-      - **Adjust Settings:** Fine-tune gain, sample rate, and FFT size for optimal detection.
+   - **LoRa Detection Tab:**
+     - **Select Frequency Band:** Choose from preset LoRa frequencies or enter a custom frequency.
+     - **Configure LoRa Parameters:** Set spreading factor (7-12), bandwidth (7.8-500 kHz), and detection threshold.
+     - **Start Detection:** Click "Start Detection" to begin monitoring for LoRa signals.
+     - **Monitor Signals:** Watch the spectrum and waterfall displays for LoRa activity.
+     - **View Detection Info:** Check the detection panel for detailed signal information.
+     - **Enable Peak Hold:** Toggle peak hold to track maximum signal levels.
+     - **Adjust Settings:** Fine-tune gain, sample rate, and FFT size for optimal detection.
+
+   - **Signal Classification Tab:**
+     - **Data Collection:**
+       - **Collect Samples:** Gather labeled signal and noise samples directly from the SDR.
+       - **Region Selection:** Select specific frequency regions in the spectrum plot for labeling.
+       - **Labeling Tools:** Label selected regions as "Signal" or "Noise" to build a labeled dataset.
+     - **Machine Learning Integration:**
+       - **Feature Extraction:** Automatically extract relevant features from collected samples for model training.
+       - **Model Training:** Train customizable machine learning models (e.g., neural networks) using the labeled dataset.
+       - **Real-Time Classification:** Perform real-time classification of incoming signals based on the trained model.
+       - **Model Management:** Save, load, and manage trained models for future use.
+     - **Visualization:**
+       - **Training Metrics Plot:** Monitor training progress with real-time loss and accuracy graphs.
+       - **Prediction Results:** Display classification results directly on the spectrum and waterfall plots.
+     - **Controls:**
+       - **Start/Stop Streaming:** Control the data streaming process for classification.
+       - **Start/Stop Training:** Initiate or halt the training process.
+       - **Save/Load Model:** Save trained models to disk or load existing models for classification.
+       - **Adjust Training Parameters:** Configure epochs, batch size, and other training settings.
+     - **Status Indicators:** Provide real-time feedback on training progress, classification status, and any operational messages.
 
 3. **Interact with the Map:**
 
-    - **View Aircraft Positions:** Multiple plane icons will appear on the map, each rotated based on their heading.
-    - **View Details:** Click on any plane icon to view detailed information about the aircraft.
+   - **View Aircraft Positions:** Multiple plane icons will appear on the map, each rotated based on their heading.
+   - **View Details:** Click on any plane icon to view detailed information about the aircraft.
 
 4. **Search and Filter:**
 
-    - Use the search bar in the **Dump1090 Tab** to filter aircraft by callsign or ICAO code.
+   - Use the search bar in the **Dump1090 Tab** to filter aircraft by callsign or ICAO code.
+
+
+

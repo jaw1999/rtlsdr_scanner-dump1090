@@ -1,0 +1,14 @@
+PyQt5
+numpy
+pyrtlsdr
+pyqtgraph
+scipy
+matplotlib
+pandas
+requests
+tensorflow
+tensorflow-cpu
+scikit-learn
+json
+folium
+pywavelets

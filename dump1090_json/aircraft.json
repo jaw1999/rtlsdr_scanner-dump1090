@@ -1,0 +1,8 @@
+{ "now" : 1729661592.6,
+  "messages" : 46,
+  "aircraft" : [
+    {"hex":"ac212d","alt_baro":10400,"alt_geom":10625,"gs":328.2,"track":43.3,"baro_rate":-1600,"version":0,"nac_p":8,"nac_v":2,"sil":2,"sil_type":"unknown","mlat":[],"tisb":[],"messages":2,"seen":1.3,"rssi":-33.3},
+    {"hex":"ae6d7d","flight":"KING04  ","alt_baro":1775,"alt_geom":2025,"gs":192.3,"track":120.3,"geom_rate":-960,"category":"A3","nav_qnh":1024.8,"nav_altitude_fms":1504,"nav_heading":160.3,"nav_modes":["althold","tcas"],"lat":47.094543,"lon":-122.545830,"nic":10,"rc":25,"seen_pos":0.6,"version":2,"nic_baro":1,"nac_p":10,"nac_v":2,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"mlat":[],"tisb":[],"messages":23,"seen":0.2,"rssi":-12.6},
+    {"hex":"ab2169","flight":"UAL214  ","alt_baro":31175,"alt_geom":31375,"gs":460.4,"track":357.8,"baro_rate":-960,"nav_qnh":1012.8,"nav_altitude_mcp":12000,"lat":47.566910,"lon":-122.255241,"nic":8,"rc":186,"seen_pos":0.6,"version":2,"nic_baro":1,"nac_p":9,"nac_v":1,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"mlat":[],"tisb":[],"messages":21,"seen":0.3,"rssi":-21.8}
+  ]
+}
